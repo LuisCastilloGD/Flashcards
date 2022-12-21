@@ -1,98 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="FlashcardsTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-12-19T17:25:41" hostname="Luiss-MBP.localdomain" time="0.66">
+<testsuite name="FlashcardsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-12-20T18:02:16" hostname="Luiss-MBP.localdomain" time="0.704">
   <properties/>
-  <testcase name="start" classname="FlashcardsTest" time="0.66">
-    <failure message="java.lang.AssertionError: Wrong answer in test #16&#10;&#10;The number of lines your program saves is less than the number of lines that was input/output to the console&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):&#10;&gt; hardest card&#10;There are no cards with errors.&#10;Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):&#10;&gt; import&#10;File name:&#10;&gt; capitals.txt&#10;1 cards have been loaded.&#10;Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):&#10;&gt; hardest card&#10;The hardest card is &quot;France&quot;. You have 2 errors answering it&#10;Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):&#10;&gt; ask&#10;How many times to ask?&#10;&gt; 1&#10;Print the definition of &quot;France&quot;:&#10;&gt; Tokyo&#10;Wrong. The right answer is &quot;Paris&quot;.&#10;Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):&#10;&gt; hardest card&#10;The hardest card is &quot;France&quot;. You have 3 errors answering it&#10;Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):&#10;&gt; reset stats&#10;Card statistics have been reset&#10;Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):&#10;&gt; hardest card&#10;There are no cards with errors.&#10;Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):&#10;&gt; log&#10;File name:&#10;&gt; todayLog.txt&#10;The log has been saved.&#10;Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #16
-
-The number of lines your program saves is less than the number of lines that was input/output to the console
-
-Please find below the output of your program during this failed test.
-Note that the '&gt;' character indicates the beginning of the input line.
-
----
-
-Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-&gt; hardest card
-There are no cards with errors.
-Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-&gt; import
-File name:
-&gt; capitals.txt
-1 cards have been loaded.
-Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-&gt; hardest card
-The hardest card is &quot;France&quot;. You have 2 errors answering it
-Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-&gt; ask
-How many times to ask?
-&gt; 1
-Print the definition of &quot;France&quot;:
-&gt; Tokyo
-Wrong. The right answer is &quot;Paris&quot;.
-Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-&gt; hardest card
-The hardest card is &quot;France&quot;. You have 3 errors answering it
-Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-&gt; reset stats
-Card statistics have been reset
-Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-&gt; hardest card
-There are no cards with errors.
-Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-&gt; log
-File name:
-&gt; todayLog.txt
-The log has been saved.
-Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-	at org.junit.Assert.fail(Assert.java:89)
-	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:203)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
-	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
-</failure>
-  </testcase>
+  <testcase name="start" classname="FlashcardsTest" time="0.704"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
@@ -629,7 +538,7 @@ File name:
 1 cards have been loaded.
 Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
 > hardest card
-The hardest cards are "France", "Russia", . You have 3 errors answering them
+The hardest cards are "France", "Russia", . You have 3 errors answering them 
 Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
 > exit
 Bye bye!
@@ -705,6 +614,48 @@ File name:
 > todayLog.txt
 The log has been saved.
 Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> exit
+Bye bye!
+?[1;31m
+Start test 17?[0m
+Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> hardest card
+There are no cards with errors.
+Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> add
+The card:
+> Movie
+The definition of the card:
+> A recorded sequence of images displayed on a screen at a rate sufficiently fast
+The pair ("Movie":"A recorded sequence of images displayed on a screen at a rate sufficiently fast") has been added
+Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> exit
+1 cards have been saved.
+Bye bye!
+?[1;31m
+Start test 18?[0m
+1 cards have been loaded.
+Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> add
+The card:
+> Movie
+The card "Movie" already exists.
+Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> remove
+Which card?
+> Movie
+The card has been removed
+Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> add
+The card:
+> Series
+The definition of the card:
+> A television program which consists of several episodes
+The pair ("Series":"A television program which consists of several episodes") has been added
+Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> exit
+1 cards have been saved.
+Bye bye!
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

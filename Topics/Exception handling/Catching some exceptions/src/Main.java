@@ -5,8 +5,7 @@ public class Main {
     private static String array = null;
 
     public static void methodCatchingSomeExceptions() {
-
-
+        // invoke methodThrowingExceptions here and catch some types of exceptions
     }
 
     /* Do not change code below */
@@ -40,7 +39,7 @@ public class Main {
         try {
             methodCatchingSomeExceptions();
         } catch (Exception e) {
-            System.out.println("Caught: " + e.getClass().getSimpleName());
+            System.out.println("Caught: " + e.getClass().getName());
         }
     }
 }

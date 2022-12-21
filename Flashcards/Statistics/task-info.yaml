@@ -865,54 +865,12 @@ files:
 
     }
   learner_created: true
-- name: defaultLog.txt
+- name: src/flashcards/FileLogger.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5348#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #16
-
-    The number of lines your program saves is less than the number of lines that was input/output to the console
-
-    Please find below the output of your program during this failed test.
-    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
-
-    ---
-
-    Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-    &gt; hardest card
-    There are no cards with errors.
-    Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-    &gt; import
-    File name:
-    &gt; capitals.txt
-    1 cards have been loaded.
-    Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-    &gt; hardest card
-    The hardest card is &quot;France&quot;. You have 2 errors answering it
-    Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-    &gt; ask
-    How many times to ask?
-    &gt; 1
-    Print the definition of &quot;France&quot;:
-    &gt; Tokyo
-    Wrong. The right answer is &quot;Paris&quot;.
-    Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-    &gt; hardest card
-    The hardest card is &quot;France&quot;. You have 3 errors answering it
-    Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-    &gt; reset stats
-    Card statistics have been reset
-    Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-    &gt; hardest card
-    There are no cards with errors.
-    Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-    &gt; log
-    File name:
-    &gt; todayLog.txt
-    The log has been saved.
-    Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
-  time: "Mon, 19 Dec 2022 17:25:42 UTC"
+  message: Congratulations!
+  time: "Mon, 19 Dec 2022 22:18:19 UTC"
 record: 6

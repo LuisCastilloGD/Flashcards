@@ -13,6 +13,7 @@ public class FlashCard {
     public void setMistakes(int mistakes) {
         this.mistakes = mistakes;
     }
+
     public String getTerm() {
         return term;
     }
@@ -29,22 +30,22 @@ public class FlashCard {
         this.definition = definition;
     }
 
-    FlashCard(String term, String definition){
+    FlashCard(String term, String definition) {
         setTerm(term);
         setDefinition(definition);
     }
 
-    FlashCard(String term, String definition, int mistakes){
+    FlashCard(String term, String definition, int mistakes) {
         setTerm(term);
         setDefinition(definition);
         setMistakes(mistakes);
     }
 
-    public void gotMistaken(){
+    public void gotMistaken() {
         setMistakes(getMistakes() + 1);
     }
 
-    public void resetMistakes(){
+    public void resetMistakes() {
         setMistakes(0);
     }
 

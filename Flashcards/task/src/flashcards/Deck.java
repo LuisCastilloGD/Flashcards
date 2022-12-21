@@ -6,136 +6,180 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.File;
 import java.io.PrintWriter;
+
 public class Deck {
-    private List<FlashCard> cards;
-
+    private final List<FlashCard> cards;
     private int askIndex;
+    private final FileLogger fileLogger;
 
-    public int getAskIndex() {
+    protected int getAskIndex() {
         return askIndex;
     }
 
-    public void setAskIndex(int askIndex) {
+    private void setAskIndex(final int askIndex) {
         this.askIndex = askIndex;
     }
 
-    public void setNextAskIndex(){
-        if(this.getAskIndex() >= getCards().size()-1) {
+    final protected void setNextAskIndex() {
+        if (this.getAskIndex() >= getCards().size() - 1) {
             setAskIndex(0);
-        }else{
+        } else {
             setAskIndex(this.getAskIndex() + 1);
         }
     }
 
-    public List<FlashCard> getCards() {
-        return  this.cards.stream().toList();
-    }
-    private void setCards(List<FlashCard> cards) {
-        this.cards = cards;
+    final protected List<FlashCard> getCards() {
+        return this.cards.stream().toList();
     }
 
-    Deck(){
-        cards = new ArrayList<>();
-        askIndex = 0;
+    Deck() {
+        this.cards = new ArrayList<>();
+        this.askIndex = 0;
+        this.fileLogger = FileLogger.getInstance();
     }
 
-    protected void addNewCard(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("The card:");
+    Deck(File file) {
+        this.cards = new ArrayList<>();
+        this.askIndex = 0;
+        this.fileLogger = FileLogger.getInstance();
+        importCards(file);
+    }
+
+    final protected void addNewCard() {
+        final Scanner scanner = new Scanner(System.in);
+        fileLogger.log("The card:\n");
         String term = scanner.nextLine();
-        if(!isUniqueTerm(term)){
-            System.out.println("The card \""+term+"\" already exists.");
+        fileLogger.logInput(term);
+        if (!isUniqueTerm(term)) {
+            fileLogger.log("The card \"" + term + "\" already exists.\n");
             return;
         }
-        System.out.println("The definition of the card:");
+        fileLogger.log("The definition of the card:\n");
         String def = scanner.nextLine();
-        if(!isUniqueDef(def)){
-            System.out.println("The definition \""+def+"\" already exists.");
+        fileLogger.logInput(def);
+        if (!isUniqueDef(def)) {
+            fileLogger.log("The definition \"" + def + "\" already exists.\n");
             return;
         }
-        FlashCard card = new FlashCard(term,def);
-        cards.add(card);
-        System.out.println("The pair (\""+term+"\":\""+def+"\") has been added");
+        FlashCard card = new FlashCard(term, def);
+        this.cards.add(card);
+        fileLogger.log("The pair (\"" + term + "\":\"" + def + "\") has been added\n");
     }
 
-    protected void removeCard(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Which card?");
-        String term = scanner.nextLine();
-        for (FlashCard card:cards) {
-            if(card.getTerm().equals(term)){
-                cards.remove(card);
-                System.out.println("The card has been removed");
+    final protected void removeCard() {
+        final Scanner scanner = new Scanner(System.in);
+        fileLogger.log("Which card?\n");
+        final String term = scanner.nextLine();
+        fileLogger.logInput(term);
+        for (FlashCard card : cards) {
+            if (card.getTerm().equals(term)) {
+                this.cards.remove(card);
+                fileLogger.log("The card has been removed\n");
                 return;
             }
         }
-        System.out.println("Can't remove \""+term+"\":there is no such card");
+        fileLogger.log("Can't remove \"" + term + "\":there is no such card\n");
     }
 
 
-    protected void importCards(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("File name:");
-        String fileName = scanner.nextLine();
-        File flashCardFile = new File(fileName);
-        try (Scanner fileScanner = new Scanner(flashCardFile)){
+    final protected void importCards() {
+        final Scanner scanner = new Scanner(System.in);
+        fileLogger.log("File name:\n");
+        final String fileName = scanner.nextLine();
+        fileLogger.logInput(fileName);
+        final File flashCardFile = new File(fileName);
+        try (final Scanner fileScanner = new Scanner(flashCardFile)) {
             int numCards = 0;
-            while(fileScanner.hasNextLine()){
-                String term = fileScanner.nextLine();
-                String def = fileScanner.nextLine();
-                int mistakes = fileScanner.nextInt();
+            while (fileScanner.hasNextLine()) {
+                final String term = fileScanner.nextLine();
+                final String def = fileScanner.nextLine();
+                final int mistakes = fileScanner.nextInt();
                 fileScanner.nextLine();
-                addImportedCard(term,def,mistakes);
+                addImportedCard(term, def, mistakes);
                 numCards++;
             }
-            System.out.printf("%d cards have been loaded.\n",numCards);
+            fileLogger.log(numCards + " cards have been loaded.\n");
 
-        }catch (Exception e){
-            System.out.println("File not found.");
+        } catch (Exception e) {
+            fileLogger.log("File not found.\n");
         }
 
     }
 
-    protected void exportCards(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("File name:");
-        String fileName = scanner.nextLine();
+    final protected void importCards(final File file) {
+        try (final Scanner fileScanner = new Scanner(file)) {
+            int numCards = 0;
+            while (fileScanner.hasNextLine()) {
+                final String term = fileScanner.nextLine();
+                final String def = fileScanner.nextLine();
+                final int mistakes = fileScanner.nextInt();
+                fileScanner.nextLine();
+                addImportedCard(term, def, mistakes);
+                numCards++;
+            }
+            fileLogger.log(numCards + " cards have been loaded.\n");
+        } catch (Exception e) {
+            fileLogger.log("File not found.\n");
+        }
+    }
+
+    final protected void exportCards() {
+        final Scanner scanner = new Scanner(System.in);
+        fileLogger.log("File name:\n");
+        final String fileName = scanner.nextLine();
+        fileLogger.logInput(fileName);
         int numCards = cards.size();
         try {
-            PrintWriter fileWriter = new PrintWriter(fileName);
-            for(FlashCard card: cards){
+            final PrintWriter fileWriter = new PrintWriter(fileName);
+            for (FlashCard card : cards) {
+                fileWriter.println(card.getTerm());
+                fileWriter.println(card.getDefinition());
+                fileWriter.println(card.getMistakes());
+            }
+            fileWriter.close();
+            fileLogger.log(numCards + " cards have been saved.\n");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    final protected void exportCards(final File file) {
+        final int numCards = cards.size();
+        try {
+            final PrintWriter fileWriter = new PrintWriter(file);
+            for (FlashCard card : cards) {
                 fileWriter.println(card.getTerm());
                 fileWriter.println(card.getDefinition());
                 fileWriter.println(card.getMistakes());
             }
             fileWriter.close();
 
-            System.out.printf("%d cards have been saved.\n",numCards);
+            fileLogger.log(numCards + " cards have been saved.\n");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
 
-    protected void addImportedCard(String term, String def,int mistakes){
-        FlashCard newCard = new FlashCard(term,def,mistakes);
-        if(isUniqueTerm(term)){
-            cards.add(newCard);
-        }else{
-            for(FlashCard card:cards){
-                if(card.getTerm().equals(term)){
+    private void addImportedCard(final String term, final String def, final int mistakes) {
+        FlashCard newCard = new FlashCard(term, def, mistakes);
+        if (isUniqueTerm(term)) {
+            this.cards.add(newCard);
+        } else {
+            for (FlashCard card : cards) {
+                if (card.getTerm().equals(term)) {
                     card.setDefinition(def);
                 }
             }
         }
     }
 
-    protected void hardestCard(){
+    final protected void hardestCard() {
         int mostMistakes = 0;
         List<FlashCard> hardestCards = new ArrayList<>();
 
-        for (FlashCard card :getCards()) {
-            if(card.getMistakes() > mostMistakes){
+        for (FlashCard card : getCards()) {
+            if (card.getMistakes() > mostMistakes) {
                 mostMistakes = card.getMistakes();
                 hardestCards.clear();
                 hardestCards.add(card);
@@ -144,43 +188,40 @@ public class Deck {
             }
         }
 
-        if(mostMistakes==0) {
-            System.out.println("There are no cards with errors.");
-        }
-        else if(hardestCards.size()==1){
-            System.out.println("The hardest card is \""+hardestCards.get(0).getTerm()+"\". You have "+ hardestCards.get(0).getMistakes()+" errors answering it");
-        }else{
-            System.out.print("The hardest cards are ");
-            int cardCounter = 1;
-            for(FlashCard card :hardestCards){
-                System.out.printf("\"%s\", ",card.getTerm(),cardCounter);
-                cardCounter++;
+        if (mostMistakes == 0) {
+            fileLogger.log("There are no cards with errors.\n");
+        } else if (hardestCards.size() == 1) {
+            fileLogger.log("The hardest card is \"" + hardestCards.get(0).getTerm() + "\". You have " + hardestCards.get(0).getMistakes() + " errors answering it\n");
+        } else {
+            fileLogger.log("The hardest cards are ");
+            for (FlashCard card : hardestCards) {
+                fileLogger.log("\"" + card.getTerm() + "\", ");
+
             }
-            System.out.printf(". You have %d errors answering them",hardestCards.get(0).getMistakes());
-            System.out.println();
+            fileLogger.log(". You have " + hardestCards.get(0).getMistakes() + " errors answering them \n");
         }
 
 
     }
 
-    protected void resetStats(){
-        for(FlashCard card: this.cards){
+    final protected void resetStats() {
+        for (FlashCard card : this.cards) {
             card.setMistakes(0);
         }
-        System.out.println("Card statistics have been reset");
+        fileLogger.log("Card statistics have been reset\n");
     }
 
-    protected boolean isUniqueTerm(String newTerm){
-        for (FlashCard card: cards) {
-            if(card.getTerm().equals(newTerm))
+    final protected boolean isUniqueTerm(String newTerm) {
+        for (FlashCard card : cards) {
+            if (card.getTerm().equals(newTerm))
                 return false;
         }
         return true;
     }
 
-    protected boolean isUniqueDef(String newDef){
-        for (FlashCard card: cards) {
-            if(card.getDefinition().equals(newDef))
+    final protected boolean isUniqueDef(String newDef) {
+        for (FlashCard card : cards) {
+            if (card.getDefinition().equals(newDef))
                 return false;
         }
         return true;

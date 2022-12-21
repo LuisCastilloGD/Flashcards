@@ -575,7 +575,7 @@ The card:
 1 cards have been loaded.
 [Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
 > hardest card
-MThe hardest cards are "France", "Russia", . You have 3 errors answering them
+NThe hardest cards are "France", "Russia", . You have 3 errors answering them 
 [Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
 > exit
 	Bye bye!
@@ -651,3 +651,48 @@ The card:
 > todayLog.txt
 The log has been saved.
 [Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> exit
+	Bye bye!
+[1;31m
+Start test 17[0m
+[Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> hardest card
+ There are no cards with errors.
+[Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> add
+
+The card:
+> Movie
+The definition of the card:
+R> A recorded sequence of images displayed on a screen at a rate sufficiently fast
+tThe pair ("Movie":"A recorded sequence of images displayed on a screen at a rate sufficiently fast") has been added
+[Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> exit
+1 cards have been saved.
+	Bye bye!
+[1;31m
+Start test 18[0m
+1 cards have been loaded.
+[Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> add
+
+The card:
+> Movie
+!The card "Movie" already exists.
+[Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+	> remove
+Which card?
+> Movie
+The card has been removed
+[Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> add
+
+The card:
+	> Series
+The definition of the card:
+:> A television program which consists of several episodes
+]The pair ("Series":"A television program which consists of several episodes") has been added
+[Input the action (add, remove, import, export, ask, exit, log, hardest card, reset stats):
+> exit
+1 cards have been saved.
+	Bye bye!
