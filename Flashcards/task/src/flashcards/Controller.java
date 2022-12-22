@@ -57,8 +57,11 @@ public class Controller {
         final int numQuestions = scanner.nextInt();
         fileLogger.logInput(Integer.toString(numQuestions));
         scanner.nextLine();
+        List<String> valuesList = new ArrayList<String>(this.deck.getCards().keySet());
         for (int i = 0; i < numQuestions; i++) {
-            final FlashCard card = this.deck.getCards().get(this.deck.getAskIndex());
+            int randomIndex = new Random().nextInt(valuesList.size());
+            String randomValue = valuesList.get(randomIndex);
+            final FlashCard card = this.deck.getCards().get(randomValue);
             fileLogger.log("Print the definition of \"" + card.getTerm() + "\":\n");
             final String def = scanner.nextLine();
             fileLogger.logInput(def);
@@ -69,20 +72,17 @@ public class Controller {
                     fileLogger.log("Wrong. The right answer is \"" + card.getDefinition() + "\".\n");
                 card.gotMistaken();
             }
-            this.deck.setNextAskIndex();
         }
-
-
     }
 
     private boolean foundDefInOtherCard(final String def, final FlashCard card) {
-        for (FlashCard cardCompare : this.deck.getCards()) {
+        for (HashMap.Entry<String, FlashCard> entry : this.deck.getCards().entrySet()) {
+            FlashCard cardCompare = entry.getValue();
             if (def.equals(cardCompare.getDefinition()) && !card.equals(cardCompare)) {
                 fileLogger.log("Wrong. The right answer is \"" + card.getDefinition() + "\", but your definition is correct for \"" + cardCompare.getTerm() + "\"  \n");
                 card.gotMistaken();
                 return true;
             }
-
         }
         return false;
     }
