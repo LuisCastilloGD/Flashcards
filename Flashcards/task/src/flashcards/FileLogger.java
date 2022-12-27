@@ -20,7 +20,6 @@ public class FileLogger {
         System.out.print(log);
         logger.append(log);
     }
-
     public void logInput(final String log) {
         logger.append(log + "\n");
     }
